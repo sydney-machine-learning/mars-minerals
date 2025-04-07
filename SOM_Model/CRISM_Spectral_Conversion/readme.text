@@ -1,1 +1,1 @@
-
+The file CRISM_Spectral_Converion.py is used to import a CRISM TER3 Image File and output summary products to a nominated directory as a .h5 file.
