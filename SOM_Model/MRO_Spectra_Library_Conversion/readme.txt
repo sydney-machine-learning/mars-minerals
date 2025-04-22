@@ -1,1 +1,1 @@
-
+Using the links specified in the "Links.csv" file, this Python code "CRISM_Replication_Library" converts hyperspectral data in the MRO CRISM Type Spectra Library into Summary Products and stores that output as "MRO_Library_Results.csv". The Python file "MRO_Library_Analysis" provides some analytics on the output.
