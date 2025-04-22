@@ -122,43 +122,6 @@ def normalize(band, view_name):
 
     return np.nan_to_num(normalised_band, nan=0)
 
-def false_view(ter3_location):
-
-    with rasterio.open(ter3_location) as dataset:
-
-        tags = dataset.tags()
-        frequencies = np.array([float(value.split()[0]) for key, value in tags.items() if key.startswith("Band_")])
-
-        wave2529 = np.argmin(np.abs(frequencies - 2529))
-        wave1506 = np.argmin(np.abs(frequencies - 1506))
-        wave1080 = np.argmin(np.abs(frequencies - 1080))
-
-        #Target Bands
-        band_nir = dataset.read(int(wave2529)+1)
-        band_red = dataset.read(int(wave1506) + 1)
-        band_green = dataset.read(int(wave1080) + 1)
-
-        nir_norm = normalize(band_nir, "False_Color")
-        red_norm = normalize(band_red, "False_Color")
-        green_norm = normalize(band_green, "False_Color")
-
-        # Stack into an RGB false-color image
-        false_color_img = np.dstack((nir_norm, red_norm, green_norm))
-
-        # Convert to 8-bit by scaling and converting to uint8
-        rgb_8bit_from_float = (false_color_img * 255).astype(np.uint8)
-
-        # Rotate the image 270 degrees counterclockwise (or 90 degrees clockwise)
-        #rgb_8bit_from_float = np.rot90(rgb_8bit_from_float, k=2)  # k=3 means 3 * 90 degrees
-
-        # Plot the rotated image
-        #plt.figure(figsize=(10, 10))
-        #plt.imshow(rgb_8bit_from_float)
-        #plt.axis("off")
-        #plt.show()
-
-    return rgb_8bit_from_float
-
 def draw_plus(image, center, size=50, thickness=10, color = (255,255,0)):
 
     # Function to draw a yellow plus symbol on an image
@@ -410,11 +373,11 @@ def call_layer(file_location, band_names):
     # Convert to 8-bit by scaling and converting to uint8
     rgb_8bit_from_float = (norm_img_stack * 255).astype(np.uint8)
 
-    #rgb_8bit_from_float = np.rot90(rgb_8bit_from_float, k=0)
-    #plt.figure(figsize=(10, 10))
-    #plt.imshow(rgb_8bit_from_float)
-    #plt.axis("off")
-    #plt.show()
+    rgb_8bit_from_float = np.rot90(rgb_8bit_from_float, k=0)
+    plt.figure(figsize=(10, 10))
+    plt.imshow(rgb_8bit_from_float)
+    plt.axis("off")
+    plt.show()
 
     return rgb_8bit_from_float
 
