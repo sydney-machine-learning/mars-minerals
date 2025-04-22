@@ -28,7 +28,7 @@ results = pd.DataFrame(columns=['Mineral Name', 'Mineral Group'] + Product_List)
 for index, tmp_row in mineral_links.iterrows():
 
     # Generate a variable for the mineral (clean name)
-    cleaned_name = re.sub(r"[ /-]", "_", str(tmp_row[0]))  # Ensure it's a string
+    cleaned_name = re.sub(r"[ /-]", "_", str(tmp_row[0]))
 
     # Add the mineral to the results table
     new_row = pd.DataFrame([[tmp_row[0],tmp_row[1]]+[np.nan] * (results.shape[1]-2)], columns=results.columns, index=[cleaned_name])
@@ -52,7 +52,7 @@ results.to_csv("unscaled_MRO_Library_Results.csv")
 results.iloc[:,2:-1] = results.iloc[:, 2:-1].where(results.iloc[:, 2:-1] >= 0, 0)
 
 #Scale the results
-for tmp_col in results.columns[2:]:  # Start from the 3rd column
+for tmp_col in results.columns[2:]:
     col_data = results[tmp_col]
 
     #Linear Scaling
@@ -96,6 +96,5 @@ for ax, (group_name, group_data) in zip(axes, grouped_results):
     ax.set_xlabel('Features')
     ax.set_ylabel('Rows')
 
-# Adjust layout for better spacing
 plt.tight_layout()
 plt.show()
