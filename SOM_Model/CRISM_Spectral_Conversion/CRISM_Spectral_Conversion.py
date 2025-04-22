@@ -1,11 +1,20 @@
 #This script consumes TER3 CRISM spectral data and converts that data into 29 summary products.
-#The 29 summary products are contained within the support_functions.py file.
-#The output is stored in a h5py file.
+#The formulae for the 29 summary products are contained within the support_functions.py file.
+#The output is stored as a h5py file.
 #TER Data - https://ode.rsl.wustl.edu/mars/pagehelp/Content/Missions_Instruments/Mars%20Reconnaissance%20Orbiter/CRISM/CRISM%20Product%20Primer/CRISM%20TER.htm
 #This script requires Version 3 TER data, there should be a .hdr, .img, .lbl file in the same directory.
 #This script directly references to .img file.
 
-#IMPORT MODULES
+#STEP 1 of 1 - SPECIFY INPUT AND OUTPUT LOCATIONS
+#---------------------------------
+#TER3 is the raw TER3 image file, in the same folder should be a .hdr and .lbl file.
+TER3_Location = "D:/CRISM Data/FRT00003E12/IF166J_TER/frt00003e12_07_if166j_ter3.img"
+Output_Location = "D:/CRISM Data/FRT00003E12/Python_Converted/"
+#---------------------------------
+
+#***************************************
+
+#Import Statements
 #---------------------------------
 import rasterio
 import numpy as np
@@ -19,11 +28,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Support_Files')))
 from CRISM_Products_Corrected import * #Located in the Support_Files directory
 from support_functions import * #Located in the Support_Files directory
-
-#SPECIFY INPUTS AND OUTPUT LOCATIONS
-#---------------------------------
-TER3_Location = "D:/CRISM Data/FRT0000ABCB/frt0000abcb_07_if166j_ter3.img"
-Output_Location = "D:/CRISM Data/FRT0000ABCB/Python_Converted"
 h5_file_path = os.path.join(Output_Location, "stacked_frames.h5")
 
 # Function to apply summary products generation
@@ -38,6 +42,10 @@ def generate_summary_products(pixel_class, Summary_Products):
             Summary_Products - a list of the summary products that need to be calculated.
 
     Outputs: A list of the output of those summary products for this pixel.
+
+    Note: Requires access to:
+        from CRISM_Products_Corrected import *  # Located in the Support_Files directory
+
     """
 
     results = []
