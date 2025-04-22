@@ -1,9 +1,8 @@
 import csv
 import numpy as np
-import random
-import math
 
 class SOM(object):
+
     """
     Self-Organizing Map (SOM)
 
@@ -22,6 +21,12 @@ class SOM(object):
         training can resume from that point (with consideration to the learning rate and radius etc) and continue
         training the existing weights which are included via int_weights.
 
+    Credits:
+
+    This code was developed based on the article:
+    "Implementing Self-Organizing Maps with Python and TensorFlow" by rubikscode.net
+    Source: https://rubikscode.net/2021/07/06/implementing-self-organizing-maps-with-python-and-tensorflow/
+    Significant modifications and adaptations have been made to suit the specific requirements of this project.
     """
 
     def __init__(self, x, y, input_dim, learning_rate, radius, num_iter, int_iter=0, int_weights=None):

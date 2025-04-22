@@ -1,3 +1,37 @@
+#This script trains a SOM model based on the instances contained in the h5 file.
+#h5 file required, generated in CRISM_Spectral_Conversion.py
+
+# -----------------------
+# STEP 1/3 - Datasource
+# -----------------------
+file_path = "D:/CRISM Data/FRT00003E12/Python_Converted/stacked_frames.h5"
+
+# -----------------------
+# STEP 2/3 SOM Training Parameters
+# -----------------------
+X = 50                 # SOM Size (X)
+Y = 50                 # SOM Size (Y)
+samples_iter = 5000    # Number of instances per iteration
+l_rate = 0.5           # Initial learning rate
+burn_itter = 50        # Burn-in iterations
+num_itter = 1000       # Learning iterations
+
+# -----------------------
+# STEP 3/3 - Minimum Group Size
+# -----------------------
+min_instance = 2000  # Number of instances for smallest group.
+
+#Kmeans is used to segregate data into groups until the size of the smallest group contains less than the number of
+#instances specified here, instances are then sampled equally from each of these groups to ensure smaller groups, which
+#are more likely to contain interesting features obtain more representation in the SOM training.
+
+# -----------------------
+
+#***************************************
+
+# -----------------------
+#Import Statements
+# -----------------------
 import os
 import sys
 import h5py
@@ -15,45 +49,12 @@ from support_functions import *
 # -----------------------
 # Import Processed TER3 Data (H5 File)
 # -----------------------
-file_path = "D:/CRISM Data/FRT00013F5B/IF164J_TER/Python_Converted/stacked_frames.h5"
 with h5py.File(file_path, "r") as f:
     combined_data = f['stacked_frames'][:]  # Load all data at once
-
-# -----------------------
-# Data Batching
-# -----------------------
-min_instance = 2000  # Number of instances for smallest group
-
-# -----------------------
-# SOM Training Parameters
-# -----------------------
-X = 50                 # SOM Size (X)
-Y = 50                 # SOM Size (Y)
-samples_iter = 5000    # Number of instances per iteration
-l_rate = 0.5           # Initial learning rate
-burn_itter = 50        # Burn-in iterations
-num_itter = 1000       # Learning iterations
 
 # -------------------------------
 # Preprocessing - Scaling
 # -------------------------------
-def preprocess_data(data):
-    """
-    Scale CRISM TER3 data while ignoring 65535 values.
-    Inputs:
-        data - A single frame for a particular summary product.
-    Returns:
-        Scaled data with masked invalid entries.
-    """
-    masked_data = np.ma.masked_equal(data, 65535)
-    masked_data[masked_data < 0] = 0  # Clip negative values
-
-    data_min = masked_data.min()  # Should be 0
-    data_max = masked_data.max()
-    scaled_data = (masked_data - data_min) / (data_max - data_min)
-
-    data[~masked_data.mask] = scaled_data.compressed()
-    return data
 
 # Apply scaling to all frames
 data_lists = [preprocess_data(frame) for frame in combined_data]
