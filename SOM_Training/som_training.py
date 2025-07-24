@@ -4,7 +4,7 @@
 # -----------------------
 # STEP 1/3 - Datasource
 # -----------------------
-file_path = "D:/CRISM Data/FRT00003E12/Python_Converted/stacked_frames.h5"
+file_path = "https://zenodo.org/records/16397494/files/stacked_frames.h5"
 
 # -----------------------
 # STEP 2/3 SOM Training Parameters
