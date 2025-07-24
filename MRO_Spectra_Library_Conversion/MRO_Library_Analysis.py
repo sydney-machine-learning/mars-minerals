@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Import Processed MRO Library Data & Clip
-mro_data = pd.read_csv("../../To Delete/MRO_Library_Results.csv", index_col=0)
+mro_data = pd.read_csv("MRO_Library_Results.csv", index_col=0)
 mro_data_clipped = mro_data.iloc[:,2:]
 
 #Extract Iron Oxides & Silicates
