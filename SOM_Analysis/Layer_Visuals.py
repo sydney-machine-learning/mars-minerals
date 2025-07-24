@@ -22,15 +22,15 @@ import matplotlib.pyplot as plt
 #TER3 is the original CRISM TER3 Image File
 #h5_file is our processed CRISM TER3 Image File
 #The mro_crism file is output of the processed MRO CRISM Library Samples
-ter3_file = "D:/CRISM Data/FRT00003E12/TER_Data/frt00003e12_07_if166j_ter3.img"
-h5_file = "D:/CRISM Data/FRT00003E12/TER_Data/Python_Converted/stacked_frames.h5"
+ter3_file = "https://zenodo.org/records/16397494/files/frt00003e12_07_if166j_ter3.img"
+h5_file = "https://zenodo.org/records/16397494/files/stacked_frames.h5"
 mro_crism = parent_dir + '\\MRO_Spectra_Library_Conversion\\MRO_Library_Results.csv'
 
 #Outputs from the SOM's training
-som_weights_loc = parent_dir + '\\SOM_Training\\Scans\\FRT00003E12_50_50\\som_weights.csv'
-som_locations_loc = parent_dir + '\\SOM_Training\\Scans\\FRT00003E12_50_50\\som_locations.csv'
-reshapped_data_loc = parent_dir + '\\SOM_Training\\Scans\\FRT00003E12_50_50\\reshaped_data.csv'
-reshapped_locations_loc = parent_dir + '\\SOM_Training\\Scans\\FRT00003E12_50_50\\reshaped_indices.csv'
+som_weights_loc = "https://zenodo.org/records/16397494/files/som_weights.csv"
+som_locations_loc = "https://zenodo.org/records/16397494/files/som_locations.csv"
+reshapped_data_loc = "https://zenodo.org/records/16397494/files/reshaped_data.csv"
+reshapped_locations_loc = "https://zenodo.org/records/16397494/files/reshaped_indices.csv"
 
 #----------------------------------------
 #Identify Spatial Distribution of a Specific Mineral
@@ -59,6 +59,7 @@ rotation = 0
 #Do you want to plot pixels under specific neurons
 graph_select_nodes = False
 
+#This is an example list...
 neuron_list = np.array([  19,   20,   21,   22,   23,   24,   25,   26,   27,   28,   29,
          30,   31,   32,   33,   34,   35,   36,   37,   44,   45,   67,
          68,   69,   70,   71,   72,   73,   74,   75,   76,   77,   78,

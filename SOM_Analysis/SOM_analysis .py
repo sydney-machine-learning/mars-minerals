@@ -16,10 +16,10 @@ parent_dir = os.path.dirname(os.getcwd())
 # -----------------------
 # Specify SOM Output Locations
 # -----------------------
-som_weights_loc = parent_dir + '\\SOM_Training\\scans\\FRT00003E12_50_50\\som_weights.csv'
-som_locations_loc = parent_dir + '\\SOM_Training\\scans\\FRT00003E12_50_50\\som_locations.csv'
-reshapped_data_loc = parent_dir + '\\SOM_Training\\scans\\FRT00003E12_50_50\\reshaped_data.csv'
-reshapped_locations_loc = parent_dir + '\\SOM_Training\\scans\\FRT00003E12_50_50\\reshaped_indices.csv'
+som_weights_loc = "https://zenodo.org/records/16397494/files/som_weights.csv"
+som_locations_loc = "https://zenodo.org/records/16397494/files/som_locations.csv"
+reshapped_data_loc = "https://zenodo.org/records/16397494/files/reshaped_data.csv"
+reshapped_locations_loc = "https://zenodo.org/records/16397494/files/reshaped_indices.csv"
 
 #Import MRO CRISM Library
 parent_dir = os.path.dirname(os.getcwd())
