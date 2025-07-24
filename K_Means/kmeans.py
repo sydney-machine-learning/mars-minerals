@@ -22,13 +22,13 @@ from support_functions import *
 #h5_file is our processed CRISM TER3 Image File
 #The mro_crism file is output of the processed MRO CRISM Library Samples
 
-ter3_file = "D:/CRISM Data/FRT0000634B/TER_Data/frt0000634b_07_if163j_ter3.img"
-h5_file = "D:/CRISM Data/FRT0000634B/TER_Data/Python_Converted/stacked_frames.h5"
+ter3_file = "https://zenodo.org/records/16397494/files/frt00003e12_07_if166j_ter3.img"
+h5_file = "https://zenodo.org/records/16397494/files/stacked_frames.h5"
 mro_crism = parent_dir + '\\MRO_Spectra_Library_Conversion\\MRO_Library_Results.csv'
 
 #Some outputs from the SOM model - Just usable pixel data extracted from the h5 file.
-reshapped_data_loc = parent_dir + '\\SOM_Training\\Scans\\FRT0000634B_50_50\\reshaped_data.csv'
-reshapped_locations_loc = parent_dir + '\\SOM_Training\\Scans\\FRT0000634B_50_50\\reshaped_indices.csv'
+reshapped_data_loc = "https://zenodo.org/records/16397494/files/reshaped_data.csv"
+reshapped_locations_loc = "https://zenodo.org/records/16397494/files/reshaped_indices.csv"
 
 #----------------------------------------
 #STEP 2 - KMeans Parameters
