@@ -5,15 +5,6 @@
 #This script requires Version 3 TER data, there should be a .hdr, .img, .lbl file in the same directory.
 #This script directly references to .img file.
 
-#STEP 1 of 1 - SPECIFY INPUT AND OUTPUT LOCATIONS
-#---------------------------------
-#TER3 is the raw TER3 image file, in the same folder should be a .hdr and .lbl file.
-TER3_Location = "D:/CRISM Data/FRT00003E12/IF166J_TER/frt00003e12_07_if166j_ter3.img"
-Output_Location = "D:/CRISM Data/FRT00003E12/Python_Converted/"
-#---------------------------------
-
-#***************************************
-
 #Import Statements
 #---------------------------------
 import rasterio
@@ -22,6 +13,16 @@ import sys
 import os
 import time
 import h5py
+
+
+#STEP 1 of 1 - SPECIFY INPUT AND OUTPUT LOCATIONS
+#---------------------------------
+#TER3 is the raw TER3 image file, in the same folder should be a .hdr and .lbl file.
+TER3_Location = "https://zenodo.org/records/16397494/files/frt00003e12_07_if166j_ter3.img"
+Output_Location = os.path.dirname(os.path.abspath(__file__))
+#---------------------------------
+
+#***************************************
 
 #Files Located in other directories
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
